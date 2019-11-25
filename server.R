@@ -10,5 +10,32 @@ server = function(input, output) {
     list_selections_FY1()
   })
   
+  list_selections_SY1 = eventReactive(input$add_course_SY1, {
+    selections$SY1 <<- rbind(selections$SY1, filter(classes, Course == input$SY1_class))
+    selections$SY1
+  })
+  
+  output$selected_SY1 = renderDataTable({
+    list_selections_SY1()
+  })
+  
+  list_selections_FY2 = eventReactive(input$add_course_FY2, {
+    selections$FY2 <<- rbind(selections$FY2, filter(classes, Course == input$FY2_class))
+    selections$FY2
+  })
+  
+  output$selected_FY2 = renderDataTable({
+    list_selections_FY2()
+  })
+  
+  list_selections_SY2 = eventReactive(input$add_course_SY2, {
+    selections$SY2 <<- rbind(selections$SY2, filter(classes, Course == input$SY2_class))
+    selections$SY2
+  })
+  
+  output$selected_SY2 = renderDataTable({
+    list_selections_SY2()
+  })
+  
   # output$report = renderPrint({ report() })
 }
