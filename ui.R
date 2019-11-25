@@ -11,13 +11,16 @@ ui = fluidPage(
     splitLayout(
       fluidPage(h4("Fall, Year 1"),
                wellPanel(
+                 textOutput("selected_FY1"),
                  selectInput("FY1_class", "Select a class", classes),
-                 submitButton("Add Course")
+                 actionButton("add_course_FY1", "Add Course", 
+                              style="color: white; background-color: #02169B; border-color: #2e6da4")
                )
       ),
       fluidPage(h4("Spring, Year 1"),
                 wellPanel(
-                  submitButton("Add Course")
+                  actionButton("add_course_SY1", "Add Course", 
+                               style="color: white; background-color: #02169B; border-color: #2e6da4")
                 )
       )
     )
@@ -27,12 +30,14 @@ ui = fluidPage(
     splitLayout(
       fluidPage(h4("Fall, Year 2"),
                 wellPanel(
-                  submitButton("Add Course")
+                  actionButton("add_course_FY2", "Add Course", 
+                               style="color: white; background-color: #02169B; border-color: #2e6da4")
                 )
       ),
       fluidPage(h4("Spring, Year 2"),
                 wellPanel(
-                  submitButton("Add Course")
+                  actionButton("add_course_SY2", "Add Course", 
+                               style="color: white; background-color: #02169B; border-color: #2e6da4")
                 )
       )
     )
@@ -41,7 +46,7 @@ ui = fluidPage(
   fluidRow(
     column(width = 3,
       wellPanel(
-        submitButton("Submit")
+        actionButton("Submit_form", "Submit Form")
       )
     )
   ),
