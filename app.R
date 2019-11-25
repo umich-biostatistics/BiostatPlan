@@ -1,6 +1,8 @@
 
 # import packages
 library(shiny)
+library(tidyverse)
+library(DT)
 
 # source server and UI functions
 source("global.R")

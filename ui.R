@@ -2,8 +2,8 @@
 ui = fluidPage(
   
   fluidRow(
-    headerPanel(h3("biosPlan: the Biostatistics M.S. course planner", style="color: #02169B")),
-              div(style = "height:55px;background-color: #F1F1F1;") 
+    headerPanel(h3("biosPlan: the Biostatistics M.S. course planner", style="color: #02169B; font-weight: bold;")),
+              div(style = "height:55px; background-color: #F1F1F1;") 
   ),
   
   
@@ -11,8 +11,8 @@ ui = fluidPage(
     splitLayout(
       fluidPage(h4("Fall, Year 1"),
                wellPanel(
-                 textOutput("selected_FY1"),
-                 selectInput("FY1_class", "Select a class", classes),
+                 dataTableOutput("selected_FY1"),
+                 selectInput("FY1_class", "Select a class", classes$Course),
                  actionButton("add_course_FY1", "Add Course", 
                               style="color: white; background-color: #02169B; border-color: #2e6da4")
                )
