@@ -7,8 +7,12 @@ classes = list(
 )
 
 selections = list(
-  "FY1" = c(),
-  "SY1" = c(),
-  "FY2" = c(),
-  "SY2" = c()
+  "FY1" = data.frame(),
+  "SY1" = data.frame(),
+  "FY2" = data.frame(),
+  "SY2" = data.frame()
 )
+
+print_selection = function(semester) {
+  
+}

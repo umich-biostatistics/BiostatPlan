@@ -46,7 +46,8 @@ ui = fluidPage(
   fluidRow(
     column(width = 3,
       wellPanel(
-        actionButton("Submit_form", "Submit Form")
+        actionButton("Submit_form", "Submit Form", 
+                     style="color: black; background-color: #fcc203; border-color: #2e6da4")
       )
     )
   ),
