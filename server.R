@@ -1,6 +1,15 @@
 
 server = function(input, output) {
   
+  showModal(draggableModalDialog(
+    title = "Full screen mode recommended on your browser.",
+    "Please expand your browser to full screen. The features of this application 
+    are difficult to see in small windows.",
+    "Click anywhere on the greyed out page to close this window.",
+    easyClose = TRUE,
+    footer = NULL
+  ))
+  
   list_selections_FY1 = eventReactive(input$add_course_FY1, {
     selections$FY1 <<- rbind(selections$FY1, filter(classes, Course == input$FY1_class))
     selections$FY1
