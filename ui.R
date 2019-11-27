@@ -1,6 +1,5 @@
 
 ui = fluidPage(
-  
   tags$head(
     tags$style(HTML("hr {border-top: 3px solid #000000;}"))
   ),
@@ -130,5 +129,5 @@ ui = fluidPage(
   fluidPage(
     h4("Report:")
   )
-  
+
 )

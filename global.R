@@ -12,10 +12,3 @@ classes = read_csv("data/catalog.csv")
 #   Pre_Requisites =  c("No", "Yes", "No"),
 #   Required_or_Elective = c("Required", "Required", "Elective")
 # )
-
-selections = list(
-  "FY1" = list(),
-  "SY1" = list(),
-  "FY2" = list(),
-  "SY2" = list()
-)
