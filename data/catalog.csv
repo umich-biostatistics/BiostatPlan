@@ -1,0 +1,40 @@
+Course,Credits,Title,Usual_Term,Pre_requisites,Required
+BIOSTAT 601,4,Probability and Distribution Theory,"Fall, Year 1",,TRUE
+BIOSTAT 602,4,Biostatistical Inference,"Winter, Year 1",,TRUE
+BIOSTAT 650,4,Applied Statistics I: Linear Regression,"Fall, Year 1",,TRUE
+BIOSTAT 651,3,Applied Statistics II: Generalized Linear Models,"Winter, Year 1",,TRUE
+BIOSTAT 653,3,Applied Statistics III: Longitudinal Analysis,"Fall, Year 2",,TRUE
+BIOSTAT 699,4,Analysis of Biostatistical Investigations,"Winter, Year 2",,TRUE
+EPID 601,4,Principles And Methods Of Epidemiology,,,FALSE
+PUBHLTH 512,3,Principles Of Epidemiology For Public Health,,,FALSE
+EPID 516,4,Genomics In Epidemiology,,TRUE,FALSE
+EPID 621,3,Cancer Epidemiology,,,FALSE
+BIOSTAT 605,1,Intro To Sas Statistical Programming,Fall,,FALSE
+BIOSTAT 606,1,Introduction To Biocomputing,Fall,,FALSE
+BIOSTAT 607,1,Basic Computing For Data Analytics,Fall,,
+BIOSTAT 615,3,Statistical Computing,Fall,,
+BIOSTAT 617,3,Theory And Methods Of Sample Design (Soc 717 And Stat 580 And Survmeth 617),Winter,,
+BIOSTAT 619,3,Clinical Trials,Fall,,
+BIOSTAT 620,3,Introduction To Health Data Science,Winter,,
+BIOSTAT 625,3,Computing With Big Data,Fall,,
+BIOSTAT 626,3,Machine Learning For Health Sciences,Winter,,
+BIOSTAT 640,1,Data Science Seminar,Fall,,
+BIOSTAT 646,3,High Throughput Molecular Genetic And Epigenetic Data Analysis,Winter,,
+BIOSTAT 665,3,Statistical Population Genetics,Winter,,
+BIOSTAT 666,3,Statistical Models And Numerical Methods In Human Genetics,Fall,,
+BIOSTAT 675,3,Survival Time Analysis,Fall,,
+BIOSTAT 680,3,Applications Of Stochastic Processes I,Fall,,
+BIOSTAT 682,3,Applied Bayesian Inference,Fall,,
+BIOSTAT 685,3,Elements Of Nonparametric Statistics,Winter,,
+BIOSTAT 698,4,Modern Statistical Methods In Epidemiologic Studies,Fall,,
+BIOSTAT 801,3,Advanced Inference I,Fall,,
+BIOSTAT 802,3,Advanced Inference Ii,Winter,,
+BIOSTAT 815,3,Advanced Topics In Computational Statistics,Winter,,
+BIOSTAT 830,1,Advanced Topics In Biostatistics,"Fall, Winter",,
+BIOSTAT 842,3,Seminal Ideas And Controversies In Statistics,Fall,,
+BIOSTAT 865,3,Advanced Statistical Population Genetics,Winter,,
+BIOSTAT 866,3,Advanced Topics In Genetic Modeling,Winter,,
+BIOSTAT 875,3,Advanced Topics In Survival Analysis,Winter,,
+BIOSTAT 880,3,Statistical Analysis With Missing Data,Fall,,
+BIOSTAT 881,3,Causal Inference And Statistical Methods For Personalized Health Care,Winter,,
+BIOSTAT 885,3,Nonparametric Statistics,Winter,,

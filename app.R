@@ -4,6 +4,7 @@ library(shiny)
 library(tidyverse)
 library(DT)
 library(shinyjqui)
+library(readr)
 
 # source server and UI functions
 source("global.R")
