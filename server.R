@@ -143,13 +143,26 @@ server = function(input, output, session) {
       value = ""
     )
     
-    
-    observeEvent(input$Submit_form, {
-      
-    })
-    
   })
   
-  # output$report = renderPrint({ report() })
+  check_submit = 
+    eventReactive(input$Submit_form, {
+      # run checks
+      check_results = 
+        check(FY1_reactive$selected_FY1, 
+              SY1_reactive$selected_SY1, 
+              FY2_reactive$selected_FY2, 
+              SY2_reactive$selected_SY2) # returns data and text with checks in a list or something
+      # Generate HTML
+      report_results = 
+        report(check_results) # HTML (from template) with the other stuff filled in
+      # Print HTML to Report section
+      report_results
+    })
+  
+  output$report = 
+    renderUI({
+      check_submit() # HTML to print
+    })
   
 }

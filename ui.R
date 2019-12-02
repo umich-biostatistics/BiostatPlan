@@ -127,7 +127,9 @@ ui = fluidPage(
   hr(),
   h3(tags$b("Report")),
   fluidPage(
-    h4("Report:")
+    column(width = 8, 
+      htmlOutput("report")
+    )
   )
 
 )
