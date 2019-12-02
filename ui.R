@@ -74,7 +74,7 @@ ui = fluidPage(
                   selectInput("SY2_class", "Select a class", classes$Course),
                   actionButton("add_course_SY2", "Add Course", 
                                style="color: white; background-color: #02169B; border-color: #2e6da4"),
-                  actionButton("remove_course_FY2", "Remove", 
+                  actionButton("remove_course_SY2", "Remove", 
                                style="color: white; background-color: #02169B; border-color: #2e6da4")
                 )
       )
@@ -100,11 +100,11 @@ ui = fluidPage(
         ),
         inputPanel(
           h5("Course Name"),
-          textInput("Course_ID_text", "", width = '90%')
+          textInput("Course_Name_text", "", width = '90%')
         ),
         inputPanel(
           h5("# credit hours"),
-          textInput("Course_ID_text", "", width = '90%')
+          textInput("Course_hours_text", "", width = '90%')
         ),
         actionButton("add_new_course", "Add", 
                      style="color: white; background-color: #02169B; border-color: #2e6da4")
