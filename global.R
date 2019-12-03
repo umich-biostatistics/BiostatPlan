@@ -4,11 +4,22 @@
 # List of all available classes
 classes = read_csv("data/catalog.csv")
 
-#   data.frame(
-#   Course = c("BIOS 601", "BIOS 602", "HEA 223"),
-#   Credits = c(4, 4, 3),
-#   Title = c("Intro to Biostatistics", "Inermed Biostatistics", "Health 101"),
-#   Usual_Term = c("Fall, Year 1", "Spring, Year 1", "Fall, Year 1"),
-#   Pre_Requisites =  c("No", "Yes", "No"),
-#   Required_or_Elective = c("Required", "Required", "Elective")
-# )
+check_funs = 
+  list(
+    'num_credits' = function(plan) {
+      do.call(function(x) sum(x$Credits))
+    }
+  )
+
+# Generate list of check results
+check = 
+  function(plan) {
+    results = vector(mode = "list", length = 50L)
+    
+    return(results)
+  }
+
+search_class = 
+  function(class_ID, classes) {
+    return(class_ID %in% classes$Course)
+  }

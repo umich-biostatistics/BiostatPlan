@@ -3,10 +3,13 @@ ui = fluidPage(
   tags$head(
     tags$style(HTML("hr {border-top: 3px solid #000000;}"))
   ),
+  # tags$footer(
+  #   tags$style(HTML("hr {border-top: 3px solid #000000;}"))
+  # ),
   
   fluidRow(
     headerPanel(h3("BiostatPlan: the Biostatistics M.S. course planner", style="color: #02169B; font-weight: bold;")),
-              div(style = "height:55px; background-color: #F1F1F1;") 
+              div(style = "height:72px; background-color: #F1F1F1;") 
   ),
   tags$br(), tags$br(),
   fluidRow(
@@ -43,7 +46,7 @@ ui = fluidPage(
                               style="color: white; background-color: #02169B; border-color: #2e6da4")
                )
       ),
-      fluidPage(h4("Spring, Year 1"),
+      fluidPage(h4("Winter, Year 1"),
                 wellPanel(
                   dataTableOutput("selected_SY1"),
                   selectInput("SY1_class", "Select a class", classes$Course),
@@ -68,7 +71,7 @@ ui = fluidPage(
                                style="color: white; background-color: #02169B; border-color: #2e6da4")
                 )
       ),
-      fluidPage(h4("Spring, Year 2"),
+      fluidPage(h4("Winter, Year 2"),
                 wellPanel(
                   dataTableOutput("selected_SY2"),
                   selectInput("SY2_class", "Select a class", classes$Course),
@@ -107,7 +110,8 @@ ui = fluidPage(
           textInput("Course_hours_text", "", width = '90%')
         ),
         actionButton("add_new_course", "Add", 
-                     style="color: white; background-color: #02169B; border-color: #2e6da4")
+                     style="color: white; background-color: #02169B; border-color: #2e6da4"),
+        uiOutput("add_class_error")
       )
     ),
     column(width = 6)
@@ -116,20 +120,25 @@ ui = fluidPage(
   hr(),
   h3(tags$b("Submit Form")),
   fluidRow(
+    column(width = 6,
+           h4("The `Generate report` button will check for errors and download the report as a webpage.
+              Click the on the downloaded file to open it in a web browser."),
+           tags$br(),
+           h4("If your web browser prevents the download, you may have to change the download settings to 
+              allow downloads from this site.")
+    ),
     column(width = 3,
       wellPanel(
-        actionButton("Submit_form", "Submit Form", 
+        downloadButton("report", "Generate report", 
                      style="color: black; background-color: #fcc203; border-color: #2e6da4")
       )
     )
-  ),
+  ), 
   tags$br(), tags$br(), tags$br(),
-  hr(),
-  h3(tags$b("Report")),
-  fluidPage(
-    column(width = 8, 
-      htmlOutput("report")
+  fluidRow(
+    HTML('<footer> 
+          <div class="col-sm-12" style="height:55px; background-color: #F1F1F1; margin: 0; overflow: hidden; padding: 0"></div>
+       </footer>')
     )
-  )
-
+  
 )

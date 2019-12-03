@@ -94,50 +94,60 @@ server = function(input, output, session) {
       SY2_reactive$selected_SY2
     })
   
-  
+  output$add_class_error = 
+    renderUI({
+      if(search_class(input$Course_ID_text, classes)) {
+        p("Error: Attempted to add a class that is already in the database.")
+      }
+    })
   
   observeEvent(input$add_new_course, {
+    
+    shiny::validate(
+      need(search_class(input$Course_ID_text, classes) == FALSE, "")
+    )
+    
     classes = rbind(classes, rep(NA, ncol(classes)))
     N = nrow(classes)
     classes$Course[N] = input$Course_ID_text
     classes$Credits[N] = as.numeric(input$Course_hours_text)
     classes$Title[N] = input$Course_Name_text
     classes <<- classes
-    
+      
     updateSelectInput(
       session, "FY1_class",
       label = "Select a class",
       choices = classes$Course
     )
-    
+      
     updateSelectInput(
       session, "SY1_class",
       label = "Select a class",
       choices = classes$Course
     )
-    
+      
     updateSelectInput(
       session, "FY2_class",
       label = "Select a class",
       choices = classes$Course
     )
-    
+      
     updateSelectInput(
       session, "SY2_class",
       label = "Select a class",
       choices = classes$Course
     )
-    
+      
     updateTextInput(
       session, "Course_ID_text",
       value = ""
     )
-    
+      
     updateTextInput(
       session, "Course_Name_text",
       value = ""
     )
-    
+      
     updateTextInput(
       session, "Course_hours_text",
       value = ""
@@ -145,24 +155,25 @@ server = function(input, output, session) {
     
   })
   
-  check_submit = 
-    eventReactive(input$Submit_form, {
-      # run checks
-      check_results = 
-        check(FY1_reactive$selected_FY1, 
-              SY1_reactive$selected_SY1, 
-              FY2_reactive$selected_FY2, 
-              SY2_reactive$selected_SY2) # returns data and text with checks in a list or something
-      # Generate HTML
-      report_results = 
-        report(check_results) # HTML (from template) with the other stuff filled in
-      # Print HTML to Report section
-      report_results
-    })
-  
   output$report = 
-    renderUI({
-      check_submit() # HTML to print
-    })
+    downloadHandler(
+      filename = "report.html",
+      content = function(file) {
+        tempReport = file.path(tempdir(), "report.Rmd")
+        file.copy("report.Rmd", tempReport, overwrite = TRUE)
+        plan = list('FY1' = FY1_reactive$selected_FY1,
+                    'SY1' = SY1_reactive$selected_SY1,
+                    'FY2' = FY2_reactive$selected_FY2,
+                    'SY2' = SY2_reactive$selected_SY2)
+        checks = check(plan)
+        params = list(plan = plan,
+                      checks = checks)
+        rmarkdown::render(tempReport, 
+                          output_file = file,
+                          params = params,
+                          envir = new.env(parent = globalenv())
+        )
+      }
+    )
   
 }

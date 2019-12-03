@@ -5,6 +5,8 @@ library(tidyverse)
 library(DT)
 library(shinyjqui)
 library(readr)
+library(knitr)
+library(kableExtra)
 
 # source server and UI functions
 source("global.R")

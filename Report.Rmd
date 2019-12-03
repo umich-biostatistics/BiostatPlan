@@ -1,0 +1,53 @@
+---
+title: "Course Plan"
+output: html_document
+params:
+  plan: NA
+  checks: NA
+---
+
+### Course Plan:
+
+Note that the app is not comprehensive. Ensure that you and your advisor independenly validate your plan.
+
+```{r, echo=F, results = 'asis'}
+tags$br()
+```
+
+#### Fall, Year 1
+```{r, echo=F}
+kable(params$plan$FY1) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+                                         position = "left")
+```
+
+#### Winter, Year 1
+```{r, echo=F}
+kable(params$plan$SY1) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+                                         position = "left")
+```
+
+#### Fall, Year 2
+```{r, echo=F}
+kable(params$plan$FY2) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+                                         position = "left")
+```
+
+#### Winter, Year 2
+```{r, echo=F}
+kable(params$plan$SY2) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+                                         position = "left")
+```
+
+```{r, echo=F, results = 'asis'}
+tags$br(); tags$br()
+```
+
+### Problems with this plan:
+
+Note that these checks are not comprehensive. Ensure that you and your advisor independenly validate your plan.
+
+```{r, echo=F, results = 'asis'}
+for (i in 1:length(params$checks)) {
+  h5(tags$br(), tags$li(params$checks[[i]]))  %>% as.character %>% cat
+}
+```
