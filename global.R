@@ -3,6 +3,7 @@
 
 # List of all available classes
 classes = read_csv("data/catalog.csv")
+HDS = 'No'
 
 #' plan = list(
 #'   'FYI' = classes[1:3,],
@@ -22,20 +23,33 @@ check_funs =
     'num_credits' = function(plan_df) {
       pass = sum(plan_df$Credits) >= 48
       if(!pass) { 'You have fewer than the required number of credits. 
-                        48 credits are required.' }
+                        48 credits required.' }
       else{ NULL }
     },
     'core_courses' = function(plan_df) {
+      if(HDS == 'Yes') { return(NULL) }
       core = filter(classes, Required == TRUE)$Course
       pass = all(core %in% plan_df$Course)
-      if(!pass) { 'Your plan is missing at least one of the following core
-        courses: BIOSTAT 601, BIOSTAT 602, BIOSTAT 650, BIOSTAT 651, BIOSTAT 653, BIOSTAT 699' }
+      if(!pass) { 'Warning: Your plan is missing at least one of the following core
+        courses: BIOSTAT 601, BIOSTAT 602, BIOSTAT 650, BIOSTAT 651, BIOSTAT 653, BIOSTAT 699.
+        This warning only applies to non HDS students. If you are doing the HDS concentration, 
+        then ignore this warning and ensure you pass the HDS core check.' }
+      else{ NULL }
+    },
+    'core_courses_HDS' = function(plan_df) {
+      if(HDS == 'No') { return(NULL) }
+      core = filter(classes, RequiredHDS == TRUE)$Course
+      pass = all(core %in% plan_df$Course)
+      if(!pass) { 'Warning: (For HDS students only) If you are not doing the HDS concentration, 
+        then ignore this warning and ensure you pass the regular core course check. Your plan 
+        is missing one of the following courses: BIOSTAT 601, BIOSTAT 602, BIOSTAT 650, BIOSTAT 651,
+        BIOSTAT 620, BIOSTAT 625, BIOSTAT 629' }
       else{ NULL }
     },
     'epid_requirement' = function(plan_df) {
       course_names = plan_df$Course
       pass = any(c('PUBHLTH 512', 'EPID 601', 'EPID 621', 'EPID 516') %in% course_names)
-      if(!pass) { 'Plan failed the Epidemiology requirement: 
+      if(!pass) { 'Error: Plan failed the Epidemiology requirement: 
         The epidemiology requirement may be satisfied in any one of the following four ways: 
         1. Taking and passing the Public Health 512 exemption examination. 
         2. Completing Epidemiology 601 (4 credits) or Public Health 512  (3 credits).
@@ -69,13 +83,16 @@ check_funs =
         chosen_electives %>% filter(Department == 'Statistics') %>%
         filter(Number >= 500)
       chosen_electives = rbind(chosen_electives_biostat, chosen_electives_stat)
-      pass = chosen_electives$Credits >= 12
-      if(!pass) { 'Error: (12 credit hours) At least 12 credit hours of Biostatistics or 
-        Statistics courses are required in addition to the core courses. Each course must be 
-        ≥2 credit hours and may be selected from Biostatistics at the 600/800 level or from 
-        Statistics at the 500/600 level, including special topic courses (BIOS 664 or BIOS 830). 
-        One-credit seminars and journal clubs (e.g., BIOS 600, BIOS 605, BIOS 606, and BIOS 803) 
-        do not count as electives.' }
+      pass = NULL
+      if(HDS == 'Yes') { pass = chosen_electives$Credits %>% sum >= 9 }
+      else if (HDS == 'No') { pass = chosen_electives$Credits %>% sum >= 12 }
+      if(!pass) { 'Error: For regular track MS students: (12 credit hours) At least 12 credit 
+        hours of Biostatistics or Statistics courses are required in addition to the core courses.
+        For HDS students: (9 credit hours) At least 9 credit 
+        hours of Biostatistics or Statistics courses are required).
+        Each course must be greater than or equal to 2 credit hours and may be selected from 
+        Biostatistics at the 600/800 level or from Statistics at the 500/600 level, including 
+        special topic courses (BIOS 664 or BIOS 830).' }
       else{ NULL }
     },
     'open_electives' = function(plan_df) {
@@ -96,6 +113,7 @@ check =
   function(plan) {
     plan_df = do.call(rbind, plan)
     results = map(check_funs, function(f) {f(plan_df)})
+    results = discard(results, is.null)
     return(results)
   }
 

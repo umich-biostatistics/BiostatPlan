@@ -88,7 +88,7 @@ ui = fluidPage(
     column(width = 4,
            wellPanel(
              radioButtons("HDS_choice", h4(tags$b("Do you plan to complete the Health Data Science concentration?")),
-                          choices = c('Yes', 'No'))
+                          choices = c('Yes' = 'Yes', 'No' = 'No'))
            )
     )
   ),

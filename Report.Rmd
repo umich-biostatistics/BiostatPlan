@@ -16,25 +16,25 @@ tags$br()
 
 #### Fall, Year 1
 ```{r, echo=F}
-kable(params$plan$FY1) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+kable(params$plan$FY1 %>% select(Course, Credits, Title, Usual_Term)) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
                                          position = "left")
 ```
 
 #### Winter, Year 1
 ```{r, echo=F}
-kable(params$plan$SY1) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+kable(params$plan$SY1 %>% select(Course, Credits, Title, Usual_Term)) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
                                          position = "left")
 ```
 
 #### Fall, Year 2
 ```{r, echo=F}
-kable(params$plan$FY2) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+kable(params$plan$FY2 %>% select(Course, Credits, Title, Usual_Term)) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
                                          position = "left")
 ```
 
 #### Winter, Year 2
 ```{r, echo=F}
-kable(params$plan$SY2) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
+kable(params$plan$SY2 %>% select(Course, Credits, Title, Usual_Term)) %>% kable_styling(bootstrap_options = "striped", full_width = F, 
                                          position = "left")
 ```
 
@@ -51,3 +51,8 @@ for (i in 1:length(params$checks)) {
   h5(tags$br(), tags$li(params$checks[[i]]))  %>% as.character %>% cat
 }
 ```
+
+```{r, echo=F, results = 'asis'}
+tags$br(); tags$br(); tags$br()
+```
+

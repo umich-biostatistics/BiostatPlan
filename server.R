@@ -166,6 +166,8 @@ server = function(input, output, session) {
                     'SY1' = SY1_reactive$selected_SY1,
                     'FY2' = FY2_reactive$selected_FY2,
                     'SY2' = SY2_reactive$selected_SY2)
+        if(input$HDS_choice == 'Yes') { HDS <<- 'Yes' }
+        else { HDS <<- 'No' }
         checks = check(plan)
         params = list(plan = plan,
                       checks = checks)
