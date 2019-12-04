@@ -96,7 +96,6 @@ check =
   function(plan) {
     plan_df = do.call(rbind, plan)
     results = map(check_funs, function(f) {f(plan_df)})
-    
     return(results)
   }
 

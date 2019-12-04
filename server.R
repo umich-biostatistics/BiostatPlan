@@ -33,7 +33,9 @@ server = function(input, output, session) {
   
   output$selected_FY1 = 
     renderDataTable({
-      FY1_reactive$selected_FY1 %>% select(Course, Credits, Title, Usual_Term)
+      if(!is_empty(FY1_reactive$selected_FY1)) {
+        FY1_reactive$selected_FY1 %>% select(Course, Credits, Title, Usual_Term)
+      }
     })
   
   
@@ -50,7 +52,9 @@ server = function(input, output, session) {
   
   output$selected_SY1 = 
     renderDataTable({
-      SY1_reactive$selected_SY1 %>% select(Course, Credits, Title, Usual_Term)
+      if(!is_empty(SY1_reactive$selected_SY1)) {
+        SY1_reactive$selected_SY1 %>% select(Course, Credits, Title, Usual_Term)
+      }
     })
   
   
@@ -67,7 +71,9 @@ server = function(input, output, session) {
   
   output$selected_FY2 = 
     renderDataTable({
-      FY2_reactive$selected_FY2 %>% select(Course, Credits, Title, Usual_Term)
+      if(!is_empty(FY2_reactive$selected_FY2)) {
+        FY2_reactive$selected_FY2 %>% select(Course, Credits, Title, Usual_Term)
+      }
     })
   
   
@@ -84,7 +90,9 @@ server = function(input, output, session) {
   
   output$selected_SY2 = 
     renderDataTable({
-      SY2_reactive$selected_SY2 %>% select(Course, Credits, Title, Usual_Term)
+      if(!is_empty(SY2_reactive$selected_SY2)) {
+        SY2_reactive$selected_SY2 %>% select(Course, Credits, Title, Usual_Term)
+      }
     })
   
   output$add_class_error = 
