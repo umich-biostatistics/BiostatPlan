@@ -1,12 +1,16 @@
 
 # import packages
 library(shiny)
-library(tidyverse)
+#library(tidyverse)
+library(dplyr)
+library(purrr)
+library(magrittr)
 library(DT)
 library(shinyjqui)
 library(readr)
 library(knitr)
 library(kableExtra)
+library(exdata)
 
 # source server and UI functions
 source("global.R")

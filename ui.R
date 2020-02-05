@@ -1,4 +1,17 @@
 
+# import packages
+library(shiny)
+#library(tidyverse)
+library(dplyr)
+library(purrr)
+library(magrittr)
+library(DT)
+library(shinyjqui)
+library(readr)
+library(knitr)
+library(kableExtra)
+library(exdata)
+
 ui = fluidPage(
   tags$head(
     tags$style(HTML("hr {border-top: 3px solid #000000;}"))

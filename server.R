@@ -1,4 +1,18 @@
 
+# import packages
+library(shiny)
+#library(tidyverse)
+library(dplyr)
+library(purrr)
+library(magrittr)
+library(DT)
+library(shinyjqui)
+library(readr)
+library(knitr)
+library(kableExtra)
+library(exdata)
+
+
 server = function(input, output, session) {
 
   FY1_reactive = 
@@ -33,7 +47,7 @@ server = function(input, output, session) {
   
   output$selected_FY1 = 
     renderDataTable({
-      if(!is_empty(FY1_reactive$selected_FY1)) {
+      if(!purrr::is_empty(FY1_reactive$selected_FY1)) {
         FY1_reactive$selected_FY1 %>% select(Course, Credits, Title, Usual_Term)
       }
     })
@@ -52,7 +66,7 @@ server = function(input, output, session) {
   
   output$selected_SY1 = 
     renderDataTable({
-      if(!is_empty(SY1_reactive$selected_SY1)) {
+      if(!purrr::is_empty(SY1_reactive$selected_SY1)) {
         SY1_reactive$selected_SY1 %>% select(Course, Credits, Title, Usual_Term)
       }
     })
@@ -71,7 +85,7 @@ server = function(input, output, session) {
   
   output$selected_FY2 = 
     renderDataTable({
-      if(!is_empty(FY2_reactive$selected_FY2)) {
+      if(!purrr::is_empty(FY2_reactive$selected_FY2)) {
         FY2_reactive$selected_FY2 %>% select(Course, Credits, Title, Usual_Term)
       }
     })
@@ -90,7 +104,7 @@ server = function(input, output, session) {
   
   output$selected_SY2 = 
     renderDataTable({
-      if(!is_empty(SY2_reactive$selected_SY2)) {
+      if(!purrr::is_empty(SY2_reactive$selected_SY2)) {
         SY2_reactive$selected_SY2 %>% select(Course, Credits, Title, Usual_Term)
       }
     })
@@ -160,8 +174,8 @@ server = function(input, output, session) {
     downloadHandler(
       filename = "report.html",
       content = function(file) {
-        tempReport = file.path(tempdir(), "report.Rmd")
-        file.copy("report.Rmd", tempReport, overwrite = TRUE)
+        tempReport = file.path(tempdir(), "Report.Rmd")
+        file.copy("Report.Rmd", tempReport, overwrite = TRUE)
         plan = list('FY1' = FY1_reactive$selected_FY1,
                     'SY1' = SY1_reactive$selected_SY1,
                     'FY2' = FY2_reactive$selected_FY2,

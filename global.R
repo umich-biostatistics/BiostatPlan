@@ -1,22 +1,35 @@
 
 # global objects shared between UI and server
 
+# import packages
+library(shiny)
+#library(tidyverse)
+library(dplyr)
+library(purrr)
+library(magrittr)
+library(DT)
+library(shinyjqui)
+library(readr)
+library(knitr)
+library(kableExtra)
+library(exdata)
+
 # List of all available classes
-classes = read_csv("data/catalog.csv")
+classes = exdata::classes
 HDS = 'No'
 
-#' plan = list(
-#'   'FYI' = classes[1:3,],
-#'   #'SYI' = classes[17:20,],
-#'   #'FY2' = classes[7,],
-#'   'SY2' = classes[11:16,]
-#' )
-#' 
-#' plan_df = do.call(rbind, plan)
-#' 
-#' check_funs$num_credits(plan)
-#' check_funs$core_courses(plan_df)
-#' check_funs$epid_requirement(plan_df)
+# plan = list(
+#   'FYI' = classes[1:3,],
+#   #'SYI' = classes[17:20,],
+#   #'FY2' = classes[7,],
+#   'SY2' = classes[11:16,]
+# )
+# 
+# plan_df = do.call(rbind, plan)
+# 
+# check_funs$num_credits(plan)
+# check_funs$core_courses(plan_df)
+# check_funs$epid_requirement(plan_df)
 
 check_funs = 
   list(
