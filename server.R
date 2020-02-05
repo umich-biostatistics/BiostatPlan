@@ -17,19 +17,19 @@ server = function(input, output, session) {
 
   FY1_reactive = 
     reactiveValues(
-      "selected_FY1" = classes %>% filter(Course == 'BIOSTAT 601' | Course == 'BIOSTAT 650') # set required courses here
+      "selected_FY1" = classes_default %>% filter(Course == 'BIOSTAT 601' | Course == 'BIOSTAT 650') # set required courses here
     )
   SY1_reactive = 
     reactiveValues(
-      "selected_SY1" = classes %>% filter(Course == 'BIOSTAT 602' | Course == 'BIOSTAT 651')  # set required courses here
+      "selected_SY1" = classes_default %>% filter(Course == 'BIOSTAT 602' | Course == 'BIOSTAT 651')  # set required courses here
     )
   FY2_reactive = 
     reactiveValues(
-      "selected_FY2" = classes %>% filter(Course == 'BIOSTAT 653') # set required courses here
+      "selected_FY2" = classes_default %>% filter(Course == 'BIOSTAT 653') # set required courses here
     )
   SY2_reactive = 
     reactiveValues(
-      "selected_SY2" = classes %>% filter(Course == 'BIOSTAT 699') # set required courses here
+      "selected_SY2" = classes_default %>% filter(Course == 'BIOSTAT 699') # set required courses here
     )
   
   

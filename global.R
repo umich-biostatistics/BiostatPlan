@@ -15,7 +15,8 @@ library(kableExtra)
 library(exdata)
 
 # List of all available classes
-classes = exdata::classes
+classes = exdata::classes %>% filter(!(Course == 'BIOSTAT 601' | Course == 'BIOSTAT 650' | Course == 'BIOSTAT 602' | Course == 'BIOSTAT 651' | Course == 'BIOSTAT 653' | Course == 'BIOSTAT 699'))
+classes_default = exdata::classes %>% filter(Course == 'BIOSTAT 601' | Course == 'BIOSTAT 650' | Course == 'BIOSTAT 602' | Course == 'BIOSTAT 651' | Course == 'BIOSTAT 653' | Course == 'BIOSTAT 699')
 HDS = 'No'
 
 # plan = list(
